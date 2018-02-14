@@ -21,6 +21,12 @@ class Grid {
     for (var column = 0; column < this.numberOfColumns; column ++) {
       this.cells[column] = new Array(this.numberOfRows);
     }
+
+    for (var column = 0; column < this.numberOfColumns; column ++) {
+      for (var row = 0; row < this.numberOfRows; row++) {
+        this.cells[column][row] = new Cell(column, row, cellSize)
+      }
+    }
     print(this.cells);
   }
 
@@ -32,5 +38,14 @@ class Grid {
         rect(column * this.cellSize + 1, row * this.cellSize + 1, this.cellSize - 1, this.cellSize - 1);
       }
     }
+  }
+}
+
+class Cell {
+  constructor (column, row, size) {
+    this.column = column;
+    this.row = row;
+    this.size = size;
+    this.isAlive = false;
   }
 }
