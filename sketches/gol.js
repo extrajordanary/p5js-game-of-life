@@ -16,6 +16,12 @@ class Grid {
     this.cellSize = cellSize;
     this.numberOfColumns = floor(width / this.cellSize);
     this.numberOfRows = floor(height / this.cellSize);
+
+    this.cells = new Array(this.numberOfColumns);
+    for (var column = 0; column < this.numberOfColumns; column ++) {
+      this.cells[column] = new Array(this.numberOfRows);
+    }
+    print(this.cells);
   }
 
   draw () {
