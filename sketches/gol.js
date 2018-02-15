@@ -9,6 +9,7 @@ function setup () {
 function draw () {
   background(250);
   
+  grid.updateNeighborCounts();
   grid.draw();
 }
 
@@ -47,6 +48,34 @@ class Grid {
       }
     }
   }
+
+  updateNeighborCounts () {
+    for (var column = 0; column < this.numberOfColumns; column ++) {
+      for (var row = 0; row < this.numberOfRows; row++) {
+        var currentCell = this.cells[column][row]
+        currentCell.liveNeighborCount = 0;
+
+        for (var columnOffset = -1; columnOffset <= 1; columnOffset++) {
+          for (var rowOffset = -1; rowOffset <= 1; rowOffset++) {
+            var neighborX = currentCell.column + columnOffset
+            var neighborY = currentCell.row + rowOffset
+
+            if (this.validPosition(neighborX, neighborY)) {
+              var neighbor = this.cells[neighborX][neighborY];
+
+              if (neighbor != currentCell && neighbor.isAlive) {
+                currentCell.liveNeighborCount += 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  validPosition (column, row) {
+    return column >= 0 && column < this.numberOfColumns && row >= 0 && row < this.numberOfRows
+  }
 }
 
 class Cell {
@@ -55,6 +84,7 @@ class Cell {
     this.row = row;
     this.size = size;
     this.isAlive = false;
+    this.liveNeighborCount = 0;
   }
 
   draw () {
