@@ -3,6 +3,7 @@ var grid;
 function setup () {
   createCanvas(400, 400);
   grid = new Grid(20);
+  grid.randomize();
 }
 
 function draw () {
@@ -37,6 +38,15 @@ class Grid {
       }
     }
   }
+
+  randomize () {
+    for (var column = 0; column < this.numberOfColumns; column ++) {
+      for (var row = 0; row < this.numberOfRows; row++) {
+        var value = floor(random(2));
+        this.cells[column][row].setIsAlive(value);
+      }
+    }
+  }
 }
 
 class Cell {
@@ -55,5 +65,13 @@ class Cell {
     }
     noStroke();
     rect(this.column * this.size + 1, this.row * this.size + 1, this.size - 1, this.size - 1);
+  }
+
+  setIsAlive (value) {
+    if (value) {
+      this.isAlive = true;
+    } else {
+      this.isAlive = false;
+    }
   }
 }
