@@ -2,7 +2,7 @@ var grid;
 
 function setup () {
   createCanvas(400, 400);
-  grid = new Grid(20);
+  grid = new Grid(5);
   grid.randomize();
 }
 
@@ -10,6 +10,7 @@ function draw () {
   background(250);
   
   grid.updateNeighborCounts();
+  grid.updatePopulation();
   grid.draw();
 }
 
@@ -73,6 +74,14 @@ class Grid {
     }
   }
 
+  updatePopulation () {
+    for (var column = 0; column < this.numberOfColumns; column ++) {
+      for (var row = 0; row < this.numberOfRows; row++) {
+        this.cells[column][row].liveOrDie();
+      }
+    }
+  }
+
   validPosition (column, row) {
     return column >= 0 && column < this.numberOfColumns && row >= 0 && row < this.numberOfRows
   }
@@ -103,5 +112,12 @@ class Cell {
     } else {
       this.isAlive = false;
     }
+  }
+
+  liveOrDie () {
+    if      ((this.isAlive) && (this.liveNeighborCount <  2)) this.isAlive = false;   // Loneliness
+    else if ((this.isAlive) && (this.liveNeighborCount >  3)) this.isAlive = false;   // Overpopulation
+    else if ((!this.isAlive) && (this.liveNeighborCount === 3))  this.isAlive = true; // Reproduction
+    // otherwise stay the same
   }
 }
