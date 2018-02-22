@@ -117,6 +117,7 @@ Learning how to use `git` is NOT the focus of this project, so if you find yours
 ![screenshot of editng directly on github](images/github-edit-file-pretty.png)
 
 3- Copy your working code from your local edits, and paste it into the edit view on GitHub
+
 4- Review the code you pasted, and once it looks good, commit the changes with a good commit message
 ![screenshot of saving directly on github](images/github-commit-changes-pretty.png)
 
@@ -203,9 +204,11 @@ Finally, replace `fill(240);` with an `if else` statement to change the `fill` c
 Temporarily change `this.isAlive = false;` to `this.isAlive = true;` inside of the cell constructor and confirm that your `if` statement is correctly assigning colors depending on the cell's value.
 
 All cells dead
+
 ![screenshot of all dead](images/grid-all-dead-pretty.png)
 
 All cells alive
+
 ![screenshot of all alive](images/grid-all-alive-pretty.png)
 
 **IMPORTANT** Save your changes to GitHub! Use good commit messages, like "Finish step 4, cell draws itself"
@@ -216,7 +219,7 @@ Starting all the cells as all dead or all alive isn't very exciting. First let's
 
 Now we want to add a new function `randomize` to `Grid`. It should loop over all of it's cells just like the `draw` function. But instead of calling `draw` on the cell, we want to call 'setIsAlive` and pass it a value that will evaluate to `true` or `false`.
 
-We can use `random` to help us. Since `0` is treated as `false` and `1` is treated as `true`, we can do `floor(random(2))` and pass the result to 'setIsAlive`. `random(2)` will create random decimals between 0 and 2, and `floor` turns it into an integer by dropping everything after the decimal.
+We can use `random` to help us. Since `0` is treated as `false` and `1` is treated as `true`, we can do `floor(random(2))` and pass the result to `setIsAlive`. `random(2)` will create random decimals between 0 and 2, and `floor` turns it into an integer by dropping everything after the decimal.
 
 You can try `print(random(2));` and `print(floor(random(2)));` to see the results in the console.
 
@@ -253,7 +256,7 @@ updateNeighborCounts () {
 }
 ```
 
-Notice there are two "for each" comments here. That's a clue that this method will include at least 2 nested for loops - once to look at each cell, and another to look at each neighhor of the cell. One of the hardest part of this function will be answering the question: how do we get the cell's neighbors?
+Notice there are two "for each" comments here. That's a clue that this method will include at least 2 nested for loops - once to look at each cell, and another to look at each neighhor of the cell. One of the hardest parts of this function will be answering the question: how do we get the cell's neighbors?
 
 Let's look at an example with a much smaller grid. If a cell is at position `1,1` in the grid, it's neighbor cells will be the 8 surrounding cells in the grid.
 
@@ -318,9 +321,9 @@ Allow the user to...
 - pause the game
 - manually turn cells on or off
 - re-randomize the population without refreshing the page
-- adjust how fast the population changes (slower so you can see the changes more easily)
-- see the current number of living cells
-- see how many generations have occurred
+- adjust how fast the population changes (slower would allow you to see the changes more easily)
+- display text for the current number of living cells
+- display text for how many generations have occurred
 - *or create your own modification!*
 
 **IMPORTANT** Save your changes to GitHub! Continue to use good commit messages!
