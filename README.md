@@ -1,5 +1,13 @@
 # Project Summary
 
+This project takes you step by step through the process of creating a fully functional version of Conway's Game of Life using p5.js.
+
+The repo itself is the skeleton (starter files) which you can fork to your own repo. Instructions for turning on GitHub pages for a quick and easy shareable link to interact with your Game of Life page are also provided.
+
+If you are not already familiar with p5.js, check out the [Play With p5.JS](https://github.com/extrajordanary/play-with-p5js) repo to play with p5.js in the browser while following along with video tutorials.
+
+[TODO table of contents with links to each step](https://stackoverflow.com/questions/11948245/markdown-to-create-pages-and-table-of-contents)
+
 ## What is the Game of Life?
 From the Wikipedia entry for [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Rules):
 
@@ -20,6 +28,7 @@ We're going to build one that starts out with just the basic functionality:
 ![gif of the game of life](https://media.giphy.com/media/QfsvYoBSSpfbtFJIVo/giphy.gif)
 
 ### Project Requirements
+
 What will our Game of Life (GOL) program need to be able to do?
 
 We'll implement the following requirements in steps so that the program always runs and we can see the improvements over time:
@@ -31,7 +40,6 @@ We'll implement the following requirements in steps so that the program always r
 - get the 8 neighbors for any cell and count how many neighbors are alive
 - change a cell to being alive or dead based on the rules
 - transition all cells from one generation to the next at the same time
-- extend functionality with mouse and key commands and/or text displays of population and generation
 
 ## Preparing Your Project
 
@@ -39,9 +47,9 @@ We'll implement the following requirements in steps so that the program always r
 
 If you don't already have a [GitHub](https://github.com) account, sign up for one now!
 
-Visit the repo for the [project skeleton](TODO), which has the basic files you'll need already set up for you. This will be the starting point from which you'll follow the tutorial steps to slowly build up the rest of the Game of Life functionality.
+Visit the repo for the [project skeleton](https://github.com/extrajordanary/p5js-game-of-life), which has the basic files you'll need already set up for you. This will be the starting point from which you'll follow the tutorial steps to slowly build up the rest of the Game of Life functionality.
 
-Fork the project skeleton [project link] to your GitHub account by clicking the "fork" button in the upper right corner of the page. This will create an exact copy of the repo on your own GitHub profile.
+Fork the project skeleton to your GitHub account by clicking the "fork" button in the upper right corner of the page. This will create an exact copy of the repo on your own GitHub profile.
 
 ![screenshot of github fork button](images/github-fork-button-pretty.png)
 
@@ -64,9 +72,16 @@ If you visit the link now, you should see the initial view with the plain gray c
  You can also share this link to friends and family so they can see your progress and eventually your finished project!
 
 ### Step 3 - Editing and Viewing Changes Locally
-Download the project to work on it locally. You may use any editor you want (Atom, Sublime, etc).
 
-To run your p5.js script locally, open your browser (Chrome, Safari, etc) and navigate to the path for `index.html`. The exact path will depend on where you saved the project when you downloaded it, but it will look something like this: `/Users/username/Files/Coding/p5js-game-of-life/index.html`
+Download the project to work on it locally.
+
+[TODO add details for download steps]
+
+![screenshot of downloading the project](TODO)
+
+You may use any editor you want (Atom, Sublime, etc).
+
+To view your project locally, open your browser (Chrome, Safari, etc) and navigate to the path for `index.html`. The exact path will depend on where you saved the project when you downloaded it, but it will look something like this: `/Users/username/Files/Coding/p5js-game-of-life/index.html`
 
 In Sublime you can right click in the file and copy the file path.
 
@@ -79,20 +94,27 @@ Paste the path into your browser and you should see the simple page with the can
 As you edit and save the contents of `sketches/gol.js`, simply refresh the browser page (for the local path) to reload the sketch and see the changes.
 
 ### Step 4 - Saving Your Changes on GitHub
+
 At the end of each step of this project, you will need to create a new commit and save it to your GitHub repo.
 
 This is important for keeping a history of your changes for yourself and so that others can see your progress over time. This is similar to showing your work on a long math problem. We don't want to just see the final answer, we want to see the incremental work that went into creating the final product. It's also very helpful in case your code ever gets so broken that you want to go back a step and start over.
 
-#### Use git in the terminal...
-If you are not already familiar with using git and/or GitHub, you can check out the Product College prework [introduction to GitHub tutorials](https://github.com/MakeSchool/Product-College-Prework#git-and-github) and learn how to make git commits and push them to GitHub via the terminal...
+#### Using git
+
+If you are not already familiar with using git and/or GitHub, you can check out the Product College prework [introduction to GitHub tutorials](https://github.com/MakeSchool/Product-College-Prework#git-and-github) and learn how to make git commits and push them to GitHub via the terminal.
+
+Another option is to try out [GitHub Desktop](). You can follow [this tutorial](https://programminghistorian.org/lessons/getting-started-with-github-desktop) if you want a quick guide to working with the program.
+
+**NOTE**
+Learning how to use `git` is NOT the focus of this project, so if you find yourself getting stuck on this, please just skip the tutorials for now and use the following steps to save your changes directly in the browser.
 
 #### OR save your changes to GitHub directly in the browser
 
 1- Navigate to the file you want to save changes to
-![screenshot of saving directly on github](images/github-select-file-to-edit-pretty.png)
+![screenshot of viewing file directly on github](images/github-select-file-to-edit-pretty.png)
 
 2- Click on the `edit` pencil button on the top right of the page
-![screenshot of saving directly on github](images/github-edit-file-pretty.png)
+![screenshot of editng directly on github](images/github-edit-file-pretty.png)
 
 3- Copy your working code from your local edits, and paste it into the edit view on GitHub
 4- Review the code you pasted, and once it looks good, commit the changes with a good commit message
@@ -101,19 +123,22 @@ If you are not already familiar with using git and/or GitHub, you can check out 
 If you have correctly saved your changes to GitHub, you'll be able to visit/refresh your project's GitHub page and see your updated program live on the internet.
 
 ## Creating the Game of Life
+
 ### Step 1
+
 Create a `Grid` class with a `draw` function. Give the `Grid` class a constructor parameter `cellSize` so that it can automatically calculate how many columns and rows it should have based on the canvas `width` and `height`
 
 #### Check
 
 When you are done, uncomment/re-enable the other lines in `setup` and `draw` and confirm that you now see a grid of 20x20 cells in your canvas.
 
-![screenshot screenshot of saving directly on github](images/grid-all-dead-pretty.png)
+![screenshot screenshot of initial grid](images/grid-all-dead-pretty.png)
 
 **IMPORTANT**
 Save your changes to GitHub! Use good commit messages, like "Finish step 1, update the grid constructor"
 
 ### Step 2
+
 Now we need to add a way to keep track of the contents of each cell in the grid. At the bottom of the constructor, we need to create and assign a 2D array to `cells`.
 First assign `cells` to a new array with length equal to `numberOfColumns`. Then, for each position in the array, assign it to another new array with length equal to `numberOfRows`.
 
@@ -129,13 +154,15 @@ for (var i = 0; i < twoDArray.length; i ++) {
 ```
 
 #### Check
+
 Add `print(this.cells)` at the end of the constructor. Check that the console prints out `Array(20)` (you should also be able to expand it and see that each position also holds an empty array).
 
-![screenshot](TODO)
+![screenshot of viewing the empty arrays in the console](images/console-empty-arrays-pretty.png)
 
 **IMPORTANT** Save your changes to GitHub! Use good commit messages, like "Finish step 2, track cells in grid"
 
 ### Step 3
+
 Right now our grid has an array of arrays to keep track of cells, but we need some cells to put in it. Let's start by creating a basic `Cell` class. Each cell should have a `column`, `row`, and `size` - ensure the constructor takes these as parameters.
 
 Additionally, each cell can be either alive or dead, so let's add a boolean property to keep track of it called `isAlive`. Inside the constructor, have every cell start off dead (`isAlive` should be `false`).
@@ -152,13 +179,15 @@ for (var column = 0; column < this.numberOfColumns; column ++) {
 This code will go into each position in the 2D array and create a new `Cell`.
 
 #### Check
+
 Refresh the page and check that the console now shows a `Cell` and it's values instead of empty arrays.
 
-![screenshot](TODO)
+![screenshot of array of arrays of cells in console](images/console-arrays-of-cells-pretty.png)
 
 **IMPORTANT** Save your changes to GitHub! Use good commit messages, like "Finish step 3, create Cell class"
 
 ### Step 4
+
 Now that our grid can keep track of all of it's cells, let's start adding more functionality to the cell. To start, let's give `Cell` it's own `draw` function, so that it will be responsible for it's own appearance based on whether it is dead or alive.
 
 Inside of `Grid.draw`, remove everything inside of the nested for loop and paste it inside of the new `Cell.draw` function. Be sure to update the variables from the copied code to use `this` and to match the property names within the cell class (`column` -> `this.column`, etc).
@@ -170,26 +199,35 @@ If you get errors, use them to help guide you to where you still need to make ch
 Finally, replace `fill(240);` with an `if else` statement to change the `fill` color depending on if the cell is alive or dead. You may choose any colors you like, but this tutorial will use `color(240)` for dead cells, and `color(200,0,200)` for alive cells.
 
 #### Check
+
 Temporarily change `this.isAlive = false;` to `this.isAlive = true;` inside of the cell constructor and confirm that your `if` statement is correctly assigning colors depending on the cell's value.
 
-[screenshot all dead]
-[screenshot all alive]
+All cells dead
+![screenshot of all dead](images/grid-all-dead-pretty.png)
+
+All cells alive
+![screenshot of all alive](images/grid-all-alive-pretty.png)
 
 **IMPORTANT** Save your changes to GitHub! Use good commit messages, like "Finish step 4, cell draws itself"
 
 ### Step 5
+
 Starting all the cells as all dead or all alive isn't very exciting. First let's add a function to `Cell` that we can call to set the value of `isAlive` directly. Add a new function to `Cell` called 'setIsAlive`, that takes a paramenter `value`. If `value` is true, assign `isAlive` to true, otherwise set it to `false`.
 
 Now we want to add a new function `randomize` to `Grid`. It should loop over all of it's cells just like the `draw` function. But instead of calling `draw` on the cell, we want to call 'setIsAlive` and pass it a value that will evaluate to `true` or `false`.
 
-We can use `random` to help us. Since `0` is treated as `false` and `1` is treated as `true`, we can do `floor(random(2))` and pass the result to 'setIsAlive`. `random(2)` will create random decimals between 0 and 2, and `floor` turns it into an integer by dropping everything after the decimal. You can try `print(random(2));` and `print(floor(random(2)));` to see the results in the console.
+We can use `random` to help us. Since `0` is treated as `false` and `1` is treated as `true`, we can do `floor(random(2))` and pass the result to 'setIsAlive`. `random(2)` will create random decimals between 0 and 2, and `floor` turns it into an integer by dropping everything after the decimal.
+
+You can try `print(random(2));` and `print(floor(random(2)));` to see the results in the console.
+
+![screenshot of different random float values in console](images/console-random-floats-pretty.png)
 
 Finally, add `grid.randomize();` to the bottom of the 'setup` function.
 
 #### Check
 Each time you run the program, you should now be seeing a mix of dead and alive cells.
 
-![screenshot](TODO)
+![screenshot of random alive and dead cell population](images/grid-random-population-pretty.png)
 
 **IMPORTANT** Save your changes to GitHub! Use good commit messages, like "Finish step 5, randomize starting cells"
 
@@ -217,9 +255,9 @@ updateNeighborCounts () {
 
 Notice there are two "for each" comments here. That's a clue that this method will include at least 2 nested for loops - once to look at each cell, and another to look at each neighhor of the cell. One of the hardest part of this function will be answering the question: how do we get the cell's neighbors?
 
-Let's look at an example with a much smaller grid. If a cell is at position x, y in the grid, it's neighbor cells will be the 8 surround cells in the grid.
+Let's look at an example with a much smaller grid. If a cell is at position `1,1` in the grid, it's neighbor cells will be the 8 surrounding cells in the grid.
 
-[insert image of 3x3 cell with neighbors]
+![image of 3x3 grid, center cell is selected with 8 neighbors](images/neighbor-cells-pretty.png)
 
 You can see that the x-values for neighbor cells are either 1 less, the same, or 1 more than the current cell's x position. The same is true for the y-values.
 
@@ -241,12 +279,11 @@ You can use the above code to help get you started, but you'll still have to add
 - this code will loop over 9 cells, including the current one, so be sure not to count the current cell as one of it's neighbors
 - to avoid errors, your code shouldn't try to access grid locations that don't exist
 
-[picture of cell on edge of the grid]
+Example: Ensure that your code doesn't try to access any non-existant neighbors in column `-1`!
+![image of 3x3 grid, edge cell is selected with less than 8 valid neighbors](images/neighbor-cells-edgecase-pretty.png)
 
 #### Check
-add `print(currentCell.liveNeighborCount)` at the end of looping through it's neighbors and check in the console that the numbers look right. they should all be between 0 and 8.
-
-[screenshot of different values in console]
+Add `print(currentCell.liveNeighborCount)` at the end of looping through it's neighbors and check in the console that the numbers look right. they should all be between 0 and 8.
 
 **IMPORTANT** Save your changes to GitHub! Use good commit messages, like "Finish step 6, update neighbor counts"
 
@@ -267,7 +304,7 @@ Now make `liveOrDie` as a function in the `Cell` class. Here is where you now ne
 #### Check
 Your game should be fully functional now! Try decreasing the cell size when you create the grid to see a larger population of cells on the screen at once to confirm that the population changes as expected.
 
-[gif of working game]
+![gif of functional game of life with more cells](https://media.giphy.com/media/5eFtLod86VeUZZearv/giphy.gif)
 
 **IMPORTANT** Save your changes to GitHub! Use good commit messages, like "Finish step 7, population updates"
 
@@ -287,5 +324,3 @@ Allow the user to...
 - *or create your own modification!*
 
 **IMPORTANT** Save your changes to GitHub! Continue to use good commit messages!
-
-
