@@ -39,14 +39,27 @@ We'll implement the following requirements in steps so that the program always r
 
 If you don't already have a [GitHub](https://github.com) account, sign up for one now!
 
-Fork the project skeleton [project link] to your GitHub account.
+Visit the repo for the [project skeleton](TODO), which has the basic files you'll need already set up for you. This will be the starting point from which you'll follow the tutorial steps to slowly build up the rest of the Game of Life functionality.
 
-![screenshot of forking the project](TODO)
+Fork the project skeleton [project link] to your GitHub account by clicking the "fork" button in the upper right corner of the page. This will create an exact copy of the repo on your own GitHub profile.
+
+![screenshot of github fork button](images/github-fork-button-pretty.png)
 
 ### Step 2 - Enabling GitHub Pages
-Turn on GitHub pages for your `p5js-game-of-life` repo. [TODO detailed instructions]
 
-![screenshot of initial github pages view](TODO)
+Turning on GitHub pages for your repo will create a live hosted version of your project's `index.html` page, so that you'll have a real web address that others can visit to play your Game of Life.
+
+Once you've forked the skeleton project, visit the new repo that was created on your own account.
+
+Go to "Settings" and then scroll down until you see the "GitHub Pages" options. In the drop down, select `master branch` and then click "Save".
+
+![screenshot of turning on github pages in the settings](images/github-turn-on-pages-pretty.png)
+
+Now you'll be able to visit the live page at the url that it gives you in the settings. It should look like `https://your_user_name.github.io/your_repo_name/`
+
+If you visit the link now, you should see the initial view with the plain gray canvas.
+
+![screenshot of initial github pages view](images/canvas-project-start-pretty.png)
 
  You can also share this link to friends and family so they can see your progress and eventually your finished project!
 
@@ -59,11 +72,11 @@ In Sublime you can right click in the file and copy the file path.
 
 ![screenshot of copying file path in sublime](images/sublime-copy-file-path-pretty.png)
 
-Paste the path into your browser and you should see the simple page with the canvas below.
+Paste the path into your browser and you should see the simple page with the canvas below. This should look exactly like what you saw when you visited your GitHub pages link.
 
-![screenshot of initial project web view](TODO)
+![screenshot of initial project web view](images/canvas-project-start-pretty.png)
 
-As you edit and save the contents of `sketches/gol.js`, simply refresh the browser page to reload and see the changes.
+As you edit and save the contents of `sketches/gol.js`, simply refresh the browser page (for the local path) to reload the sketch and see the changes.
 
 ### Step 4 - Saving Your Changes on GitHub
 At the end of each step of this project, you will need to create a new commit and save it to your GitHub repo.
