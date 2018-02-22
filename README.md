@@ -75,13 +75,23 @@ If you visit the link now, you should see the initial view with the plain gray c
 
 Download the project to work on it locally.
 
-[TODO add details for download steps]
+Find and click on the "Download" button in the upper right of the project page on GitHub:
 
-![screenshot of downloading the project](TODO)
+![screenshot of downloading project zip from github](images/github-download-zip-pretty.png)
 
-You may use any editor you want (Atom, Sublime, etc).
+By default it may try to save to your Desktop or Downloads folder, but we recommend creating a "Coding" folder somewhere for yourself so that you can keep things more organized:
 
-To view your project locally, open your browser (Chrome, Safari, etc) and navigate to the path for `index.html`. The exact path will depend on where you saved the project when you downloaded it, but it will look something like this: `/Users/username/Files/Coding/p5js-game-of-life/index.html`
+![screenshot of saving zip locally](images/github-save-zip-pretty.png)
+
+Once the `.zip` file has downloaded, unzip the file and you should now see the folders and files that you'll be working with:
+
+![screenshot of viewing files locally](images/local-view-project-files-pretty.png)
+
+You may use any editor you want ([Atom](https://atom.io/), [SublimeText](https://www.sublimetext.com/), etc). To open the file you can usually right click and select which program to open it in:
+
+![screenshot of opening files in an editor](images/local-open-with-editor-pretty.png)
+
+To view a working version of your project locally, open your browser (Chrome, Safari, etc) and navigate to the path for `index.html`. The exact path will depend on where you saved the project when you downloaded it, but it will look something like this: `/Users/username/Files/Coding/p5js-game-of-life/index.html`
 
 In Sublime you can right click in the file and copy the file path.
 
@@ -265,7 +275,7 @@ You can try `print(random(2));` and `print(floor(random(2)));` to see the result
 Finally, add `grid.randomize();` to the bottom of the `setup` function.
 
 #### Check
-Each time you run the program, you should now be seeing a mix of dead and alive cells.
+Each time you run the program, you should now be seeing a different mix of dead and alive cells.
 
 ![screenshot of random alive and dead cell population](images/grid-random-population-pretty.png)
 
