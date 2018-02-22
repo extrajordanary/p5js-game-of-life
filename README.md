@@ -133,6 +133,9 @@ Learning how to use `git` is NOT the focus of this project, so if you find yours
 
 If you have correctly saved your changes to GitHub, you'll be able to visit/refresh your project's GitHub page and see your updated program live on the internet.
 
+#### Check
+Nagivate to the `index.html` file, edit it to add your name like this: `<h3>written in p5.js, by YOURNAME</h3>`, then commit your changes on GitHub. Visit your project's GitHub Page to see if it updated correctly.
+
 ## Creating the Game of Life
 
 For the rest of the tutorial, we'll be making edits to the `sketches/gol.js` file.
