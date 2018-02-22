@@ -97,7 +97,7 @@ As you edit and save the contents of `sketches/gol.js`, simply refresh the brows
 
 At the end of each step of this project, you will need to create a new commit and save it to your GitHub repo.
 
-This is important for keeping a history of your changes for yourself and so that others can see your progress over time. This is similar to showing your work on a long math problem. We don't want to just see the final answer, we want to see the incremental work that went into creating the final product. It's also very helpful in case your code ever gets so broken that you want to go back a step and start over.
+This is important for keeping a history of your changes for yourself and so that others can see your progress over time. This is similar to showing your work on a long math problem. We don't want to just show the final answer, we want to show the incremental work that went into creating the final product. It's also very helpful in case your code ever gets so broken that you want to go back a step and start over.
 
 #### Using git
 
@@ -125,13 +125,50 @@ If you have correctly saved your changes to GitHub, you'll be able to visit/refr
 
 ## Creating the Game of Life
 
+For the rest of the tutorial, we'll be making edits to the `sketches/gol.js` file.
+
+The skeleton project starts you out with the following code:
+
+```javascript
+var grid;
+
+function setup () {
+  createCanvas(400, 400);
+  // grid = new Grid(20);
+}
+
+function draw () {
+  background(250);
+
+  // grid.draw();
+}
+
+class Grid {
+  constructor () {
+    // update the contructor to take cellSize as a parameter
+    // use cellSize to calculate and assign values for numberOfColumns and numberOfRows
+  }
+
+  draw () {
+    for (var column = 0; column < this.numberOfColumns; column ++) {
+      for (var row = 0; row < this.numberOfRows; row++) {
+        fill(240);
+        noStroke();
+        rect(column * this.cellSize + 1, row * this.cellSize + 1, this.cellSize - 1, this.cellSize - 1);
+      }
+    }
+  }
+}
+```
+
+
 ### Step 1
 
-Create a `Grid` class with a `draw` function. Give the `Grid` class a constructor parameter `cellSize` so that it can automatically calculate how many columns and rows it should have based on the canvas `width` and `height`
+We already have a `Grid` class with a `draw` function. Now, we want to give the `Grid` class a constructor parameter `cellSize` so that it can automatically calculate how many columns and rows it should have based on the canvas `width` and `height`.
 
 #### Check
 
-When you are done, uncomment/re-enable the other lines in `setup` and `draw` and confirm that you now see a grid of 20x20 cells in your canvas.
+When you are done, uncomment/re-enable the other lines of code in `setup` and `draw` (remove the `//` in front of the code) and confirm that you now see a grid of 20x20 cells in your canvas.
 
 ![screenshot screenshot of initial grid](images/grid-all-dead-pretty.png)
 
@@ -203,11 +240,11 @@ Finally, replace `fill(240);` with an `if else` statement to change the `fill` c
 
 Temporarily change `this.isAlive = false;` to `this.isAlive = true;` inside of the cell constructor and confirm that your `if` statement is correctly assigning colors depending on the cell's value.
 
-All cells dead
+All cells dead:
 
 ![screenshot of all dead](images/grid-all-dead-pretty.png)
 
-All cells alive
+All cells alive:
 
 ![screenshot of all alive](images/grid-all-alive-pretty.png)
 
@@ -215,9 +252,9 @@ All cells alive
 
 ### Step 5
 
-Starting all the cells as all dead or all alive isn't very exciting. First let's add a function to `Cell` that we can call to set the value of `isAlive` directly. Add a new function to `Cell` called 'setIsAlive`, that takes a paramenter `value`. If `value` is true, assign `isAlive` to true, otherwise set it to `false`.
+Starting all the cells as all dead or all alive isn't very exciting. First let's add a function to `Cell` that we can call to set the value of `isAlive` directly. Add a new function to `Cell` called `setIsAlive`, that takes a paramenter `value`. If `value` is true, assign `isAlive` to true, otherwise set it to `false`.
 
-Now we want to add a new function `randomize` to `Grid`. It should loop over all of it's cells just like the `draw` function. But instead of calling `draw` on the cell, we want to call 'setIsAlive` and pass it a value that will evaluate to `true` or `false`.
+Now we want to add a new function `randomize` to `Grid`. It should loop over all of it's cells just like the `draw` function. But instead of calling `draw` on the cell, we want to call `setIsAlive` and pass it a value that will evaluate to `true` or `false`.
 
 We can use `random` to help us. Since `0` is treated as `false` and `1` is treated as `true`, we can do `floor(random(2))` and pass the result to `setIsAlive`. `random(2)` will create random decimals between 0 and 2, and `floor` turns it into an integer by dropping everything after the decimal.
 
@@ -225,7 +262,7 @@ You can try `print(random(2));` and `print(floor(random(2)));` to see the result
 
 ![screenshot of different random float values in console](images/console-random-floats-pretty.png)
 
-Finally, add `grid.randomize();` to the bottom of the 'setup` function.
+Finally, add `grid.randomize();` to the bottom of the `setup` function.
 
 #### Check
 Each time you run the program, you should now be seeing a mix of dead and alive cells.
