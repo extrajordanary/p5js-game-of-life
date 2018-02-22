@@ -6,8 +6,6 @@ The repo itself is the skeleton (starter files) which you can fork to your own r
 
 If you are not already familiar with p5.js, check out the [Play With p5.JS](https://github.com/extrajordanary/play-with-p5js) repo to play with p5.js in the browser while following along with video tutorials.
 
-[TODO table of contents with links to each step](https://stackoverflow.com/questions/11948245/markdown-to-create-pages-and-table-of-contents)
-
 ## What is the Game of Life?
 From the Wikipedia entry for [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Rules):
 
