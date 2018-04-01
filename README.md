@@ -175,7 +175,9 @@ class Grid {
 
 ### Step 1
 
-We already have a `Grid` class with a `draw` function. Now, we want to give the `Grid` class a constructor parameter `cellSize` so that it can automatically calculate how many columns and rows it should have based on the canvas `width` and `height`.
+We already have a `Grid` class with a `draw` function. Now, we want to give the `Grid` class a constructor parameter `cellSize` so that you can calculate and assign how many columns and rows it should have based on the canvas `width` and `height`.
+
+To get the number of columns and rows, divide the `width`/`height` by the grid's cell size.
 
 #### Check
 
@@ -183,24 +185,31 @@ When you are done, uncomment/re-enable the other lines of code in `setup` and `d
 
 ![screenshot screenshot of initial grid](images/grid-all-dead-pretty.png)
 
+Play with different values when you create the new grid to ensure that the grid size changes as expected. A smaller number should result in more rows and columns, and a bigger number should create fewer rows and columns.
+
 **IMPORTANT**
 Save your changes to GitHub! Use good commit messages, like "Finish step 1, update the grid constructor"
 
 ### Step 2
 
-Now we need to add a way to keep track of the contents of each cell in the grid. At the bottom of the constructor, we need to create and assign a 2D array to `cells`.
-First assign `cells` to a new array with length equal to `numberOfColumns`. Then, for each position in the array, assign it to another new array with length equal to `numberOfRows`.
+Now we need to add a way to keep track of the contents of the grid, so that we can have an object in each cell. At the bottom of the constructor, we need to create and assign a 2D array to `cells`.
 
-Here's one way to create a 2D array:
+Here's one way to create a 2D array that you can try out and play with:
 
 ```javascript
 var x = 2; // how big the first array should be
 var y = 2; // how big each array inside of the first array should be
-var twoDArray = new Array(x);
-for (var i = 0; i < twoDArray.length; i ++) {
-  twoDArray[i] = new Array(y);
+var twoDArray = new Array(x); // create the initial array
+for (var i = 0; i < twoDArray.length; i ++) { // loop over each position in the array
+  twoDArray[i] = new Array(y); // create another array inside of the first array at position `i`
 }
 ```
+
+If you do `print(twoDArray)`, you would see this is the console: `(2) [Array(2), Array(2)]`, showing you that the array has `2` positions, and at each position in the array there is another Array of size 2. This is a 2x2 array.
+
+Try to change the code above so that it prints out `(2) [Array(4), Array(4)]` or `(4) [Array(2), Array(2), Array(2), Array(2)]`.
+
+Now, back in `gol.js`, we want to make a `numberOfColums`x`numberOfRows` 2D array. First, assign `cells` to be an array with length equal to `numberOfColumns`. Then, for each position in the array, assign it to another new array with length equal to `numberOfRows`.
 
 #### Check
 
@@ -212,9 +221,9 @@ Add `print(this.cells)` at the end of the constructor. Check that the console pr
 
 ### Step 3
 
-Right now our grid has an array of arrays to keep track of cells, but we need some cells to put in it. Let's start by creating a basic `Cell` class. Each cell should have a `column`, `row`, and `size` - ensure the constructor takes these as parameters.
+Right now our grid has an array of arrays to keep track of cells, but we need some cells to put in it. Start by creating a `Cell` class. Each cell should have a custom value for `column`, `row`, and `size` assigned when created - so ensure the constructor takes these as parameters. This way when each cell is created, it can be assigned the values for where it is in the grid.
 
-Additionally, each cell can be either alive or dead, so let's add a boolean property to keep track of it called `isAlive`. Inside the constructor, have every cell start off dead (`isAlive` should be `false`).
+Additionally, each cell can be either alive or dead, so add a boolean property to keep track of it called `isAlive`. Inside the constructor, have every cell start off dead (`this.isAlive` should be `false`).
 
 Once you have the basic `Cell` class added, paste the following code just above `print(this.cells)` from the last step:
 
@@ -229,7 +238,7 @@ This code will go into each position in the 2D array and create a new `Cell`.
 
 #### Check
 
-Refresh the page and check that the console now shows a `Cell` and it's values instead of empty arrays.
+Refresh the page and check that `print(this.cells)` now shows the 2D array as having a `Cell` and it's values instead of empty arrays in the console.
 
 ![screenshot of array of arrays of cells in console](images/console-arrays-of-cells-pretty.png)
 
@@ -239,7 +248,7 @@ Refresh the page and check that the console now shows a `Cell` and it's values i
 
 Now that our grid can keep track of all of it's cells, let's start adding more functionality to the cell. To start, let's give `Cell` it's own `draw` function, so that it will be responsible for it's own appearance based on whether it is dead or alive.
 
-Inside of `Grid.draw`, remove everything inside of the nested for loop and paste it inside of the new `Cell.draw` function. Be sure to update the variables from the copied code to use `this` and to match the property names within the cell class (`column` -> `this.column`, etc).
+Inside of `Grid.draw`, remove everything inside of the nested for loop and paste it inside of the new `Cell.draw` function instead. Be sure to update the variables from the copied code to use `this` and to match the property names within the cell class (`column` -> `this.column`, etc).
 
 Back in the `Grid.draw` for loop, instead, get the cell from `this.cells` and call `draw` on it. When you re-run your program, everything should look exactly the same, but now each cell is drawing itself.
 
