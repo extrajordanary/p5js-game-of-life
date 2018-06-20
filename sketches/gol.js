@@ -2,16 +2,34 @@ var grid;
 
 function setup () {
   createCanvas(400, 400);
-  grid = new Grid(5);
+  grid = new Grid(20);
   grid.randomize();
+
+  print(grid.isValidPosition(0, 0));
 }
 
 function draw () {
   background(250);
-  
+
   grid.updateNeighborCounts();
   grid.updatePopulation();
   grid.draw();
+}
+
+function mousePressed() {
+  // grid.updatePopulation();
+
+  // var randomColumn = floor(random(grid.numberOfColumns));
+  // var randomRow = floor(random(grid.numberOfRows));
+
+  // var randomCell = grid.cells[randomColumn][randomRow];
+  // var neighborCount = grid.getNeighbors(randomCell).length;
+
+  // print("cell at " + randomCell.column + ", " + randomCell.row + " has " + neighborCount + " neighbors");
+// print(neighbors.length || "undefined");
+
+  grid.updateNeighborCounts();
+  print(grid.cells);
 }
 
 class Grid {
@@ -56,22 +74,43 @@ class Grid {
         var currentCell = this.cells[column][row]
         currentCell.liveNeighborCount = 0;
 
-        for (var columnOffset = -1; columnOffset <= 1; columnOffset++) {
-          for (var rowOffset = -1; rowOffset <= 1; rowOffset++) {
-            var neighborX = currentCell.column + columnOffset
-            var neighborY = currentCell.row + rowOffset
+        var neighborsArray = this.getNeighbors(currentCell);
 
-            if (this.validPosition(neighborX, neighborY)) {
-              var neighbor = this.cells[neighborX][neighborY];
-
-              if (neighbor != currentCell && neighbor.isAlive) {
-                currentCell.liveNeighborCount += 1;
-              }
-            }
+        for (var position in neighborsArray) {
+          if (neighborsArray[position].isAlive) {
+            currentCell.liveNeighborCount += 1;
           }
         }
       }
     }
+  }
+
+  getNeighbors(currentCell) {
+    var neighbors = [];
+
+    for (var columnOffset = -1; columnOffset <= 1; columnOffset++) {
+      for (var rowOffset = -1; rowOffset <= 1; rowOffset++) {
+        var neighborX = currentCell.column + columnOffset;
+        var neighborY = currentCell.row + rowOffset;
+
+        if (this.isValidPosition(neighborX, neighborY)) {
+          var neighborCell = this.cells[neighborX][neighborY];
+
+          if (neighborCell != currentCell) {
+            neighbors.push(neighborCell);
+          }
+        }
+      }
+    }
+
+    return neighbors;
+  }
+
+  isValidPosition (column, row) {
+    var validColumn = column >= 0 && column < this.numberOfColumns;
+    var validRow = row >= 0 && row < this.numberOfRows
+
+    return  validColumn && validRow;
   }
 
   updatePopulation () {
@@ -80,10 +119,6 @@ class Grid {
         this.cells[column][row].liveOrDie();
       }
     }
-  }
-
-  validPosition (column, row) {
-    return column >= 0 && column < this.numberOfColumns && row >= 0 && row < this.numberOfRows
   }
 }
 
@@ -115,9 +150,9 @@ class Cell {
   }
 
   liveOrDie () {
-    if      ((this.isAlive) && (this.liveNeighborCount <  2)) this.isAlive = false;   // Loneliness
-    else if ((this.isAlive) && (this.liveNeighborCount >  3)) this.isAlive = false;   // Overpopulation
-    else if ((!this.isAlive) && (this.liveNeighborCount === 3))  this.isAlive = true; // Reproduction
+    if      (this.isAlive && this.liveNeighborCount <  2) this.isAlive = false;   // Loneliness
+    else if (this.isAlive && this.liveNeighborCount >  3) this.isAlive = false;   // Overpopulation
+    else if (!this.isAlive && this.liveNeighborCount === 3)  this.isAlive = true; // Reproduction
     // otherwise stay the same
   }
 }
