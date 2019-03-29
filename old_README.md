@@ -4,7 +4,7 @@ This project takes you step by step through the process of creating a fully func
 
 The repo itself is the skeleton (starter files) which you can fork to your own repo. Instructions for turning on GitHub pages for a quick and easy shareable link to interact with your Game of Life page are also provided.
 
-If you are not already familiar with p5.js, check out the [Play With p5.JS](https://github.com/extrajordanary/play-with-p5js) repo to play with p5.js in the browser while following along with video tutorials.
+If you are not already familiar with p5.js, check out [Play With p5.JS](https://extrajordanary.github.io/play-with-p5js/tutorials/playlist.html) ([source repo](https://github.com/extrajordanary/play-with-p5js)) to play with p5.js in the browser while following along with video tutorials.
 
 [TODO table of contents with links to each step](https://stackoverflow.com/questions/11948245/markdown-to-create-pages-and-table-of-contents)
 
